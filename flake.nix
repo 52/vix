@@ -20,8 +20,8 @@
       in
       {
         # custom overlay, see: https://anthonyoleinik.com/blog_directory/nix-overlays/
-        overlays = [
-          (_: prev: {
+        overlays = {
+          default = _: prev: {
             vim = prev.vim-full.customize {
               name = "vim";
               vimrcConfig = {
@@ -31,8 +31,8 @@
                 '';
               };
             };
-          })
-        ];
+          };
+        };
 
         # shell used by 'nix develop', see: https://nix.dev/manual/nix/2.17/command-ref/new-cli/nix3-develop
         devShell = pkgs.mkShell {

@@ -20,17 +20,19 @@
       in
       {
         # custom overlay, see: https://anthonyoleinik.com/blog_directory/nix-overlays/
-        overlay = _: prev: {
-          vim = prev.vim-full.customize {
-            name = "vim";
-            vimrcConfig = {
-              customRC = ''
-                set runtimepath+=${self}
-                source ${self}/.vimrc
-              '';
+        overlays = [
+          (_: prev: {
+            vim = prev.vim-full.customize {
+              name = "vim";
+              vimrcConfig = {
+                customRC = ''
+                  set runtimepath+=${self}
+                  source ${self}/.vimrc
+                '';
+              };
             };
-          };
-        };
+          })
+        ];
 
         # shell used by 'nix develop', see: https://nix.dev/manual/nix/2.17/command-ref/new-cli/nix3-develop
         devShell = pkgs.mkShell {

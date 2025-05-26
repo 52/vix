@@ -9,7 +9,6 @@
 " <todo>
 "
 filetype plugin indent on
-syntax enable
 
 " <todo>
 "
@@ -21,8 +20,6 @@ let g:maplocalleader = ','
 set number
 set cursorline
 set signcolumn=yes
-set background=dark
-set termguicolors
 
 " <todo>
 "
@@ -97,4 +94,15 @@ if has('clipboard')
   else
     set clipboard=unnamed
   endif
+endif
+
+" Wayland clipboard workaround.
+" This provides a manual way to use wl-copy/wl-paste for clipboard operations.
+" See: https://github.com/vim/vim/issues/5157
+if !empty($WAYLAND_DISPLAY) && executable('wl-copy') && executable('wl-paste')
+  augroup wl-clipboard
+      autocmd!
+      autocmd FocusLost * if @+ != '' | call system('wl-copy --trim-newline', @+) | endif
+      autocmd FocusGained * let @+ = system('wl-paste -n')
+  augroup END
 endif

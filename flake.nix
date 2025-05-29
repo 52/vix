@@ -13,16 +13,46 @@
       flake-utils,
       ...
     }:
+    let
+      inherit (nixpkgs) lib;
+      inherit (builtins) attrValues;
+      inherit (lib) concatLists;
+    in
     {
       overlays = {
         default = _: prev: {
-          vim = prev.vim-full.customize {
+          vim-custom = prev.vim-full.customize {
             name = "vim";
             vimrcConfig = {
+              # set the runtimepath to the flake directory.
+              # this serves as the entrypoint for the distribution.
               customRC = ''
                 set runtimepath=${self},$VIMRUNTIME,${self}/after
+
+                " recursively add 'vendor' to the runtimepath
+                for dir in glob('${self}/vendor/*', 1, 1)
+                  if isdirectory(dir)
+                    let &runtimepath = dir . ',' . &runtimepath
+                  endif
+                endfor
+                  
                 source ${self}/.vimrc
               '';
+              packages = {
+                custom = {
+                  # eagerly loaded on startup
+                  start = concatLists [
+                    # stable channel
+                    (with prev.vimPlugins; [ ])
+
+                    # custom channel
+                    (with prev.vimUtils; [ ])
+                  ];
+
+                  # lazily loaded by calling `:packadd $name`
+                  opt = concatLists [ ];
+                };
+              };
             };
           };
         };
@@ -39,7 +69,11 @@
       {
         # shell used by 'nix develop', see: https://nix.dev/manual/nix/2.17/command-ref/new-cli/nix3-develop
         devShell = pkgs.mkShell {
-          buildInputs = [ pkgs.vim ];
+          buildInputs = attrValues {
+            inherit (pkgs)
+              vim-custom
+              ;
+          };
           shellHook = ''
             # entrypoint for the development shell
             echo "Entering the 'github:52/vim' development environment"

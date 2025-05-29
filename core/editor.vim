@@ -8,6 +8,10 @@
 
 " <todo>
 "
+set encoding=utf-8
+
+" <todo>
+"
 filetype plugin indent on
 
 " <todo>
@@ -76,8 +80,9 @@ set viminfofile=$XDG_STATE_HOME/vim/viminfo
 
 " <todo>
 "
+set ttyfast
 set lazyredraw
-set updatetime=250
+set updatetime=100
 set timeoutlen=500
 
 " <todo>

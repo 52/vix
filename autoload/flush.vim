@@ -16,7 +16,7 @@ import 'libcolor.vim' as libcolor
 
 # Cache for storing `gui:cterm` color mappings.
 # This prevents redundant approximations for frequently used colors.
-# The chace persists across colorscheme reloads.
+# The cache persists across colorscheme reloads.
 if !exists('g:flush_cterm_cache')
   g:flush_cterm_cache = {}
 endif

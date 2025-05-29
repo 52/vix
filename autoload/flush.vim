@@ -14,7 +14,9 @@ vim9script
 
 import 'libcolor.vim' as libcolor
 
-# <todo>
+# Cache for storing `gui:cterm` color mappings.
+# This prevents redundant approximations for frequently used colors.
+# The chace persists across colorscheme reloads.
 if !exists('g:flush_cterm_cache')
   g:flush_cterm_cache = {}
 endif
@@ -54,7 +56,7 @@ export def HiLink(src: string, dest: string)
   execute 'hi link' src dest
 enddef
 
-# <todo>
+# Approximate the terminal color for a hex color.
 def GetCtermColor(str: string): string
   if tolower(str) ==# 'none'
     return 'NONE'

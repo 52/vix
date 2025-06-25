@@ -53,7 +53,7 @@ export def HiLink(src: string, dest: string)
     throw '[flush.vim]: `src` and `dest` groups are required for linking'
   endif
 
-  execute 'hi link' src dest
+  execute 'hi! link' src dest
 enddef
 
 # Approximate the terminal color for a hex color.

@@ -31,13 +31,18 @@ set background=dark
 ### COLOR PALETTE
 #
 
-var b0 = '#1d1d1d' # 1st background
-var b1 = '#2f2f2f' # 2nd background
+var bg = '#1f1f1f'
+var bg_alt = '#3b3b3b'
 
-var f0 = '#f2f2f2' # 1st foreground
-var f1 = '#b3b3b3' # 2nd foreground
+var fg = '#ebebeb'
 
 ### EDITOR HIGHLIGHTS
 # 
 
-Flush.Hi('Normal', f0, b0)
+Flush.Hi('Normal', fg, bg)
+Flush.Hi('Terminal', fg, bg)
+
+# Cursor
+Flush.Hi('Cursor', bg, fg)
+Flush.Hi('CursorLine', '', bg_alt)
+Flush.HiLink('CursorColumn', 'CursorLine')

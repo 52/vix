@@ -8,12 +8,45 @@
 
 " <todo>
 "
+set guioptions+=a
+
+" <todo>
+"
 set guioptions-=m
-
-" <todo>
-"
 set guioptions-=T
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+set guioptions-=b
 
 " <todo>
 "
-set guioptions-=r
+let s:font = 'monospace'
+let s:font_size = 14
+
+" <todo>
+"
+function! s:font_reset()
+    exe ':set guifont=' . s:font . '\ ' . string(s:font_size)
+endfunction
+
+" <todo>
+"
+function! s:font_increase()
+  let s:font_size = s:font_size + 1
+  call s:font_reset()
+endfunction
+
+" <todo>
+"
+function! s:font_decrease()
+  let s:font_size = s:font_size - 1
+  call s:font_reset()
+endfunction
+
+command! FontIncrease call s:font_increase()
+command! FontDecrease call s:font_decrease()
+
+nnoremap <Leader>- :FontDecrease<CR>
+nnoremap <Leader>+ :FontIncrease<CR>

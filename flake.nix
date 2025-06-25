@@ -35,8 +35,12 @@
                     let &runtimepath = dir . ',' . &runtimepath
                   endif
                 endfor
-                  
+                                  
                 source ${self}/.vimrc
+
+                if has('gui_running') && filereadable('${self}/.gvimrc')
+                  source ${self}/.gvimrc
+                endif
               '';
               packages = {
                 custom = {
@@ -75,9 +79,8 @@
               ;
           };
           shellHook = ''
-            # entrypoint for the development shell
             echo "Entering the 'github:52/vim' development environment"
-            echo "Execute 'vim' to open the build"
+            echo "Execute 'vim' or 'gvim' to open the build"
           '';
         };
       }

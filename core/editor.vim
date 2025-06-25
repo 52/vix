@@ -50,7 +50,6 @@ set scrolloff=10
 set splitright
 set splitbelow
 
-
 " <todo>
 "
 set nofoldenable
@@ -102,7 +101,7 @@ if has('clipboard')
 endif
 
 " Wayland clipboard workaround.
-" This provides a manual way to use wl-copy/wl-paste for clipboard operations.
+" This provides a manual way to use wl-copy & wl-paste for clipboard operations.
 " See: https://github.com/vim/vim/issues/5157
 if !empty($WAYLAND_DISPLAY) && executable('wl-copy') && executable('wl-paste')
   augroup wl-clipboard

@@ -23,7 +23,7 @@ let g:maplocalleader = ','
 "
 set number
 set cursorline
-set signcolumn=yes
+set signcolumn=no
 
 " <todo>
 "

@@ -14,52 +14,32 @@
       ...
     }:
     let
-      inherit (nixpkgs) lib;
       inherit (builtins) attrValues;
-      inherit (lib) concatLists;
     in
     {
       overlays = {
-        default = _: prev: {
-          vim-custom = prev.vim-full.customize {
-            name = "vim";
-            vimrcConfig = {
-              # set the runtimepath to the flake directory.
-              # this serves as the entrypoint for the distribution.
-              customRC = ''
-                set runtimepath=${self},$VIMRUNTIME,${self}/after
+        default =
+          _: prev:
+          let
+            plugin = import ./plugin.nix { inherit self prev; };
+          in
+          {
+            vim-custom = prev.vim-full.customize {
+              vimrcConfig = {
+                inherit (plugin) packages;
+                customRC = ''
+                  set runtimepath=${self},$VIMRUNTIME,${self}/after
+                  ${plugin.runtimepath}
 
-                " recursively add 'vendor' to the runtimepath
-                for dir in glob('${self}/vendor/*', 1, 1)
-                  if isdirectory(dir)
-                    let &runtimepath = dir . ',' . &runtimepath
+                  source ${self}/.vimrc
+
+                  if has('gui_running')
+                    source ${self}/.gvimrc
                   endif
-                endfor
-                                  
-                source ${self}/.vimrc
-
-                if has('gui_running') && filereadable('${self}/.gvimrc')
-                  source ${self}/.gvimrc
-                endif
-              '';
-              packages = {
-                custom = {
-                  # eagerly loaded on startup
-                  start = concatLists [
-                    # stable channel
-                    (with prev.vimPlugins; [ ])
-
-                    # custom channel
-                    (with prev.vimUtils; [ ])
-                  ];
-
-                  # lazily loaded by calling `:packadd $name`
-                  opt = concatLists [ ];
-                };
+                '';
               };
             };
           };
-        };
       };
     }
     // flake-utils.lib.eachDefaultSystem (
@@ -75,6 +55,13 @@
         devShell = pkgs.mkShell {
           buildInputs = attrValues {
             inherit (pkgs)
+              # nix
+              nixfmt-rfc-style
+              deadnix
+              statix
+              nixd
+
+              # vim
               vim-custom
               ;
           };

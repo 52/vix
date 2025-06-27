@@ -48,5 +48,5 @@ endfunction
 command! FontIncrease call s:font_increase()
 command! FontDecrease call s:font_decrease()
 
-nnoremap <Leader>- :FontDecrease<CR>
-nnoremap <Leader>+ :FontIncrease<CR>
+nnoremap <silent> <D--> :FontDecrease<CR>
+nnoremap <silent> <D-+> :FontIncrease<CR>

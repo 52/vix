@@ -12,7 +12,11 @@ set encoding=utf-8
 
 " <todo>
 "
-filetype plugin indent on
+filetype plugin on
+
+" <todo>
+"
+set autoread
 
 " <todo>
 "

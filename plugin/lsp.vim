@@ -10,7 +10,8 @@
 " See: https://github.com/yegappan/lsp
 function! s:register_lsp_server(name, filetype, path, args) abort
   if !executable(a:path)
-    echo 'LSP server executable not found: ' . a:path
+    " Uncomment if needed for debugging:
+    " echom 'LSP executable not found: ' . a:path
     return
   endif
 
@@ -24,5 +25,9 @@ function! s:register_lsp_server(name, filetype, path, args) abort
   call LspAddServer([l:server])
 endfunction
 
-" <todo>
-autocmd VimEnter * call s:register_lsp_server('nixd', ['nix'], 'nixd', [])
+" Register configured LSP servers on startup.
+augroup lsp_servers
+  autocmd!
+  autocmd VimEnter * call s:register_lsp_server('nixd', ['nix'], 'nixd', [])
+augroup END
+

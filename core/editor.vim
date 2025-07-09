@@ -12,7 +12,7 @@ set encoding=utf-8
 
 " <todo>
 "
-filetype plugin on
+filetype plugin indent on
 
 " <todo>
 "
@@ -38,11 +38,14 @@ set hlsearch
 
 " <todo>
 "
+set autoindent
+
+" <todo>
+"
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-set smartindent
 
 " <todo>
 "
@@ -97,10 +100,10 @@ set diffopt+=indent-heuristic
 " <todo>
 "
 if has('clipboard')
+  set clipboard=unnamed
+
   if has('unnamedplus')
-    set clipboard=unnamedplus
-  else
-    set clipboard=unnamed
+    set clipboard+=unnamedplus
   endif
 endif
 
@@ -108,9 +111,10 @@ endif
 " This provides a manual way to use wl-copy & wl-paste for clipboard operations.
 " See: https://github.com/vim/vim/issues/5157
 if !empty($WAYLAND_DISPLAY) && executable('wl-copy') && executable('wl-paste')
-  augroup wl-clipboard
-      autocmd!
-      autocmd FocusLost * if @+ != '' | call system('wl-copy --trim-newline', @+) | endif
-      autocmd FocusGained * let @+ = system('wl-paste -n')
-  augroup END
+  autocmd TextYankPost * call system('wl-copy --trim-newline', @0)
+
+  nnoremap p :let @0=system('wl-paste --no-newline')<CR>p
+  nnoremap P :let @0=system('wl-paste --no-newline')<CR>P
+  vnoremap p :let @0=system('wl-paste --no-newline')<CR>p
+  vnoremap P :let @0=system('wl-paste --no-newline')<CR>P
 endif

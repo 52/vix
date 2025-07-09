@@ -31,7 +31,7 @@ set background=dark
 ### COLOR PALETTE
 #
 
-var bg = '#1f1f1f'
+var bg = '#141313'
 var bg_alt = '#3b3b3b'
 
 var fg = '#ebebeb'

@@ -8,10 +8,6 @@
 
 " <todo>
 "
-set nocompatible
-
-" <todo>
-"
 function! s:env(key, fallback) abort
   if empty(getenv(a:key))
     call setenv(a:key, expand(a:fallback))

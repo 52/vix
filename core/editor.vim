@@ -112,9 +112,5 @@ endif
 " See: https://github.com/vim/vim/issues/5157
 if !empty($WAYLAND_DISPLAY) && executable('wl-copy') && executable('wl-paste')
   autocmd TextYankPost * call system('wl-copy --trim-newline', @0)
-
-  nnoremap p :let @0=system('wl-paste --no-newline')<CR>p
-  nnoremap P :let @0=system('wl-paste --no-newline')<CR>P
-  vnoremap p :let @0=system('wl-paste --no-newline')<CR>p
-  vnoremap P :let @0=system('wl-paste --no-newline')<CR>P
+  nnoremap p :r !wl-paste --no-newline<CR>
 endif

@@ -6,11 +6,9 @@
 "
 "
 
-" <todo>
-"
+" Enable the netrw directory banner.
 let g:netrw_banner = 1
 
-" <todo>
-"
+" Set the netrw history file location.
 let g:netrw_home = $XDG_DATA_HOME . 'vim'
 

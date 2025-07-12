@@ -6,14 +6,14 @@ let
   inherit (prev) lib vimUtils fetchFromGitHub;
   inherit (vimUtils) buildVimPlugin;
 
-  # eagerly loaded on startup (stable)
+  # Eagerly loaded on startup (stable).
   start-stable = with prev.vimPlugins; [
-    # <todo>
+    # Link: https://github.com/jiangmiao/auto-pairs/
     auto-pairs
 
-    # <todo>
+    # Link: https://github.com/yegappan/lsp/
     (buildVimPlugin {
-      name = "vim-lsp";
+      name = "lsp";
       src = fetchFromGitHub {
         owner = "yegappan";
         repo = "lsp";
@@ -23,13 +23,13 @@ let
     })
   ];
 
-  # lazily loaded by calling `:packadd $name` (stable)
+  # Lazily loaded by calling `:packadd $name` (stable).
   opt-stable = [ ];
 
-  # <todo>
+  # List of all plugins added (start + opt).
   plugins = start-stable ++ opt-stable;
 
-  # <todo>
+  # List of local vendor libraries.
   vendor = [
     "${self}/vendor/libcolor"
     "${self}/vendor/libparser"
@@ -40,7 +40,9 @@ let
     "${self}/vendor/libversion"
   ];
 
-  # <todo>
+  # Generate the 'runtimepath' entries.
+  # Vendor libraries will be loaded first to ensure availability.
+  # Followed by the plugins added in 'start-stable' and 'opt-stable'.
   runtimepath = lib.concatStringsSep "\n" [
     (lib.concatMapStringsSep "\n" (pkg: "set runtimepath+=${pkg}") vendor)
     (lib.concatMapStringsSep "\n" (pkg: "set runtimepath+=${pkg}") plugins)
@@ -49,7 +51,6 @@ in
 {
   inherit runtimepath;
 
-  # <todo>
   packages = {
     custom = {
       start = start-stable;

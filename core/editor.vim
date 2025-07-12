@@ -6,99 +6,84 @@
 "
 "
 
-" <todo>
-"
-set encoding=utf-8
-
-" <todo>
-"
+" Enable filetype, plugins and indentation.
 filetype plugin indent on
 
-" <todo>
-"
+" Automatically reload files changed outside of vim.
 set autoread
 
-" <todo>
-"
+" Configure the leader key.
 let g:mapleader = ','
 let g:maplocalleader = ','
 
-" <todo>
-"
+" Enable absolute line numbers.
 set number
+
+" Highlight the current line.
 set cursorline
+
+" Disable the sign column.
 set signcolumn=no
 
-" <todo>
-"
+" Configure search behaviour.
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
 
-" <todo>
-"
-set autoindent
-
-" <todo>
-"
+" Configure tabs and indentation.
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-" <todo>
-"
+" Disable automatic line wrapping.
 set nowrap
+
+" Enable automatic indentation.
+set autoindent
+
+" Keep 10 lines visible above and below cursor.
 set scrolloff=10
 
-" <todo>
-"
+" Split windows to the right and below.
 set splitright
 set splitbelow
 
-" <todo>
-"
+" Disable folding behaviours.
 set nofoldenable
 set foldmethod=manual
 set foldlevelstart=99
 
-" <todo>
-"
+" Configure editing behaviour.
 set backspace=indent,eol,start
 set iskeyword+=-
 
-" <todo>
-"
+" Enable automatic persistance files.
 set backup
 set swapfile
 set undofile
 set undolevels=10000
 set undoreload=10000
 
-" <todo>
-"
+" Configure XDG-compliant file locations.
+set viminfofile=$XDG_STATE_HOME/vim/viminfo
 set backupdir=$XDG_STATE_HOME/vim/backup// | call mkdir(&backupdir, 'p')
 set directory=$XDG_STATE_HOME/vim/swap//   | call mkdir(&directory, 'p')
 set undodir=$XDG_STATE_HOME/vim/undo//     | call mkdir(&undodir, 'p')
 set viewdir=$XDG_STATE_HOME/vim/view//     | call mkdir(&viewdir, 'p')
-set viminfofile=$XDG_STATE_HOME/vim/viminfo
 
-" <todo>
-"
-set ttyfast
+" Improve performance and timing.
 set lazyredraw
 set updatetime=100
 set timeoutlen=500
 
-" <todo>
-"
+" Configure sane diff mode options.
 set diffopt+=iwhite
-set diffopt+=algorithm:histogram
 set diffopt+=indent-heuristic
+set diffopt+=algorithm:histogram
 
-" <todo>
-"
+" Configure the system clipboard.
 if has('clipboard')
   set clipboard=unnamed
 

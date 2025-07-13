@@ -92,12 +92,3 @@ if has('clipboard')
   endif
 endif
 
-" Wayland clipboard workaround.
-" This provides a manual way to use wl-copy & wl-paste for clipboard operations.
-" See: https://github.com/vim/vim/issues/5157
-if !empty($WAYLAND_DISPLAY) && executable('wl-copy') && executable('wl-paste')
-  autocmd TextYankPost * call system('wl-copy --trim-newline', @0)
-  
-  vnoremap d d:call system('wl-copy --trim-newline', @")<CR>
-  nnoremap p :r !wl-paste --no-newline<CR>
-endif

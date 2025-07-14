@@ -42,7 +42,7 @@
             });
           in
           {
-            vim-custom = package.customize {
+            vix = package.customize {
               vimrcConfig = {
                 inherit (plugin) packages;
                 customRC = ''
@@ -79,12 +79,12 @@
               statix
               nixd
 
-              # vim
-              vim-custom
+              # vix
+              vix
               ;
           };
           shellHook = ''
-            echo "Entering the 'github:52/vim' development environment"
+            echo "Entering the 'github:52/vix' development environment"
             echo "Execute 'vim' or 'gvim' to open the build"
           '';
         };

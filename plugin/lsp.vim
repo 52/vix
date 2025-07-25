@@ -25,7 +25,12 @@ function! s:register_lsp_server(name, filetype, path, args) abort
   call LspAddServer([l:server])
 endfunction
 
-" Register configured LSP servers on startup.
+" Modify the default LSP configuration on startup.
+augroup lsp_config
+  autocmd!
+augroup END
+
+" Register configured LSP's on startup.
 augroup lsp_servers
   autocmd!
   autocmd VimEnter * call s:register_lsp_server('nixd', ['nix'], 'nixd', [])

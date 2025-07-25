@@ -32,9 +32,11 @@ set background=dark
 #
 
 var bg = '#242424'
-var bg_alt = '#3b3b3b'
+var fg = '#f5f5f5'
 
-var fg = '#ffffff'
+var dark = '#181414'
+var hint = '#282828'
+var gray = '#424242'
 
 ### EDITOR HIGHLIGHTS
 # 
@@ -44,5 +46,11 @@ Flush.Hi('Terminal', fg, bg)
 
 # Cursor
 Flush.Hi('Cursor', bg, fg)
-Flush.Hi('CursorLine', '', bg_alt)
+Flush.Hi('CursorLine', '', hint)
+Flush.Hi('CursorLineNr', '', hint)
 Flush.HiLink('CursorColumn', 'CursorLine')
+
+# Line numbers
+Flush.Hi('LineNr', gray, bg)
+Flush.HiLink('LineNrAbove', 'LineNr')
+Flush.HiLink('LineNrBelow', 'LineNr')

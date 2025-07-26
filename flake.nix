@@ -79,7 +79,8 @@
               statix
               nixd
 
-              # vix
+              # vim
+              vim-language-server
               vix
               ;
           };

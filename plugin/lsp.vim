@@ -35,5 +35,5 @@ augroup lsp_servers
   autocmd!
   autocmd VimEnter * call s:register_lsp_server('nixd', ['nix'], 'nixd', [])
   autocmd VimEnter * call s:register_lsp_server('rustlang', ['rust'], 'rust-analyzer', [])
+  autocmd VimEnter * call s:register_lsp_server('vimlsp', ['vim'], 'vim-language-server', ['--stdio'])
 augroup END
-

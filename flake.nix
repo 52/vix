@@ -23,17 +23,19 @@
           let
             plugin = import ./plugin.nix { inherit self prev; };
 
-            # Override the upstream package to v9.1.1540 for native wayland support.
-            # Todo: Remove when available in nixpkgs-unstable.
-            # See: https://github.com/vim/vim/issues/5157
+            # Override the upstream package to v9.1.1591 for native wayland support,
+            # and the insert mode & command-line autocomplete upgrades.
+            # TODO: Remove when available in nixpkgs-unstable.
+            # See: https://github.com/vim/vim/issues/5157/
+            # See: https://github.com/vim/vim/pull/17812/
             package = prev.vim-full.overrideAttrs (attrs: rec {
-              version = "v9.1.1540";
+              version = "9.1.1591";
 
               src = prev.fetchFromGitHub {
                 owner = "vim";
                 repo = "vim";
                 rev = "v${version}";
-                hash = "sha256-IO0SX39g0hWtemq6r2c1OjUBBpu0fvhq1vzDBjkFrnU=";
+                hash = "sha256-aiHvj01EuV0zivj2WJdWZu8+QOQiGssEK4DDRRJ5Gvc=";
               };
 
               buildInputs = attrs.buildInputs ++ [

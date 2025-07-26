@@ -6,34 +6,51 @@
 "
 "
 
-" Registers an LSP server with the 'yegappan/lsp' plugin.
-" See: https://github.com/yegappan/lsp
-function! s:register_lsp_server(name, filetype, path, args) abort
-  if !executable(a:path)
-    " Uncomment if needed for debugging:
-    " echom 'LSP executable not found: ' . a:path
-    return
+if v:version < 901
+  finish
+endif
+
+vim9script
+
+# List of LSP definitions.
+# See: https://github.com/yegappan/lsp/blob/main/doc/configs.md/
+var servers = [
+  {
+    name: 'nixd',
+    filetype: ['nix'],
+    path: 'nixd',
+    args: [],
+  },
+  {
+    name: 'rust-analyzer',
+    filetype: ['rust'],
+    path: 'rust-analyzer',
+    args: [],
+    syncInit: true,
+  },
+  {
+    name: 'vimls',
+    filetype: ['vim'],
+    path: 'vim-language-server',
+    args: ['--stdio'],
+  },
+]
+
+# Default configuration options for the plugin.
+# See: https://github.com/yegappan/lsp?tab=readme-ov-file#configuration/
+var config = {}
+
+# Registers the defined LSP's with the 'yegappan/lsp' plugin.
+# See: https://github.com/yegappan/lsp
+def Register(): void
+  var arr = filter(copy(servers), (_, s) => executable(s.path) ? v:true : v:false)
+  if !empty(arr)
+    call('LspAddServer', [arr])
   endif
+enddef
 
-  let l:server = #{
-    \   name: a:name,
-    \   filetype: a:filetype,
-    \   path: a:path,
-    \   args: a:args
-    \ }
-
-  call LspAddServer([l:server])
-endfunction
-
-" Modify the default LSP configuration on startup.
-augroup lsp_config
+augroup LSP
   autocmd!
-augroup END
-
-" Register configured LSP's on startup.
-augroup lsp_servers
-  autocmd!
-  autocmd VimEnter * call s:register_lsp_server('nixd', ['nix'], 'nixd', [])
-  autocmd VimEnter * call s:register_lsp_server('rustlang', ['rust'], 'rust-analyzer', [])
-  autocmd VimEnter * call s:register_lsp_server('vimlsp', ['vim'], 'vim-language-server', ['--stdio'])
+  autocmd User LspSetup call LspOptionsSet(config)
+  autocmd User LspSetup call Register()
 augroup END

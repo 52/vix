@@ -12,11 +12,11 @@ let
     auto-pairs
 
     # Link: https://github.com/yegappan/lsp/
-    (buildVimPlugin {
+    (buildVimPlugin rec {
       name = "lsp";
       src = fetchFromGitHub {
         owner = "yegappan";
-        repo = "lsp";
+        repo = "${name}";
         rev = "0110ae71fd10e798e68b1c203735ca2143833d9c";
         sha256 = "sha256-A4f9i1WZU/9Qlv1hJeS+MCRlDjy0oDavsFC2IEgNIVE";
       };

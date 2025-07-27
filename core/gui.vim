@@ -15,6 +15,9 @@ vim9script
 # Automatically copy selection to clipboard.
 set guioptions+=a
 
+# Maintain window dimensions on GUI changes.
+set guioptions+=k
+
 # Disable annoying GUI features.
 set guioptions-=m
 set guioptions-=T
@@ -50,8 +53,14 @@ def FontDecrease(): void
   call FontReset()
 enddef
 
+augroup Font
+  autocmd!
+  autocmd GUIEnter * call FontReset()
+augroup END
+
 command! FontIncrease call FontIncrease()
 command! FontDecrease call FontDecrease()
 
 nnoremap <silent> <D-+> :FontIncrease<CR>
 nnoremap <silent> <D--> :FontDecrease<CR>
+

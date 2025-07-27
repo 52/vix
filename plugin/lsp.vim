@@ -28,12 +28,6 @@ var servers = [
     args: [],
     syncInit: true,
   },
-  {
-    name: 'vimls',
-    filetype: ['vim'],
-    path: 'vim-language-server',
-    args: ['--stdio'],
-  },
 ]
 
 # Default configuration options for the plugin.

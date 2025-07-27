@@ -82,7 +82,6 @@
               nixd
 
               # vim
-              vim-language-server
               vix
               ;
           };

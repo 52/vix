@@ -7,7 +7,7 @@
 "
 "
 
-if v:version < 901
+if !has('vim9script')
   finish
 endif
 
@@ -31,12 +31,19 @@ set background=dark
 ### COLOR PALETTE
 #
 
-var bg = '#242424'
-var fg = '#f5f5f5'
+var bg = '#1c1c1c'
+var fg = '#f6f6f6'
 
-var dark = '#181414'
-var hint = '#282828'
+var dark = '#1e1a1a'
+var hint = '#303030'
 var gray = '#424242'
+
+# var keyword
+# var comment
+# var string
+# var number
+# var func
+# var type
 
 ### EDITOR HIGHLIGHTS
 # 
@@ -51,6 +58,6 @@ Flush.Hi('CursorLineNr', '', hint)
 Flush.HiLink('CursorColumn', 'CursorLine')
 
 # Line numbers
-Flush.Hi('LineNr', gray, bg)
+Flush.Hi('LineNr', gray, dark)
 Flush.HiLink('LineNrAbove', 'LineNr')
 Flush.HiLink('LineNrBelow', 'LineNr')

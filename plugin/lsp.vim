@@ -6,7 +6,7 @@
 "
 "
 
-if v:version < 901
+if !has('vim9script')
   finish
 endif
 
@@ -38,7 +38,9 @@ var servers = [
 
 # Default configuration options for the plugin.
 # See: https://github.com/yegappan/lsp?tab=readme-ov-file#configuration/
-var config = {}
+var config = {
+  autoComplete: false,
+}
 
 # Registers the defined LSP's with the 'yegappan/lsp' plugin.
 # See: https://github.com/yegappan/lsp

@@ -31,7 +31,7 @@ var font = 'monospace'
 var font_size = 16
 
 # Resets the font to the current 'font_size'.
-# This updates the 'guifont' option with the current values.
+# This function updates the 'guifont' option with the current values.
 def FontReset(): void
   execute ':set guifont=' .. font .. '\ ' .. string(font_size)
 enddef

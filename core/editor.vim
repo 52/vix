@@ -12,6 +12,30 @@ endif
 
 vim9script
 
+# Set the XDG_CACHE_HOME environment variable if not defined.
+# See: https://specifications.freedesktop.org/basedir-spec/latest/
+if empty(getenv('XDG_CACHE_HOME'))
+  setenv('XDG_CACHE_HOME', expand('~/.cache'))
+endif
+
+# Set the XDG_CONFIG_HOME environment variable if not defined.
+# See: https://specifications.freedesktop.org/basedir-spec/latest/
+if empty(getenv('XDG_CONFIG_HOME'))
+  setenv('XDG_CONFIG_HOME', expand('~/.config'))
+endif
+
+# Set the XDG_STATE_HOME environment variable if not defined.
+# See: https://specifications.freedesktop.org/basedir-spec/latest/
+if empty(getenv('XDG_STATE_HOME'))
+  setenv('XDG_STATE_HOME', expand('~/.local/state'))
+endif
+
+# Set the XDG_DATA_HOME environment variable if not defined.
+# See: https://specifications.freedesktop.org/basedir-spec/latest/
+if empty(getenv('XDG_DATA_HOME'))
+  setenv('XDG_DATA_HOME', expand('~/.local/share'))
+endif
+
 # Enable filetype, plugins and indentation.
 filetype plugin indent on
 

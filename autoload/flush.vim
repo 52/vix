@@ -6,7 +6,7 @@
 "
 "
 
-if v:version < 901
+if !has('vim9script')
   finish
 endif
 

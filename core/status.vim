@@ -6,5 +6,11 @@
 "
 "
 
-" Disable the status line completely.
+if !has('vim9script')
+  finish
+endif
+
+vim9script
+
+# Disable the status line completely.
 set laststatus=1

@@ -1,4 +1,4 @@
-"
+""
 "
 " SPDX-License-Identifier: MIT
 " Author: Max Karou <maxkarou@protonmail.com>

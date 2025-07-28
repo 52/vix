@@ -32,18 +32,15 @@ set background=dark
 #
 
 var bg = '#1c1c1c'
-var fg = '#f6f6f6'
+var fg = '#e8e8e8'
 
-var dark = '#1e1a1a'
-var hint = '#303030'
-var gray = '#424242'
+var dark = '#141414'
+var hint = '#292929'
+var gray = '#494141'
 
-# var keyword
-# var comment
-# var string
-# var number
-# var func
-# var type
+var yellow = '#e3c401'
+var green = '#47b413'
+var red = '#f62b5a'
 
 ### EDITOR HIGHLIGHTS
 # 
@@ -54,10 +51,14 @@ Flush.Hi('Terminal', fg, bg)
 # Cursor
 Flush.Hi('Cursor', bg, fg)
 Flush.Hi('CursorLine', '', hint)
-Flush.Hi('CursorLineNr', '', hint)
+Flush.Hi('CursorLineNr', yellow, hint)
 Flush.HiLink('CursorColumn', 'CursorLine')
 
 # Line numbers
-Flush.Hi('LineNr', gray, dark)
+Flush.Hi('LineNr', gray, bg)
 Flush.HiLink('LineNrAbove', 'LineNr')
 Flush.HiLink('LineNrBelow', 'LineNr')
+
+# Status line
+Flush.Hi('StatusLine', fg, hint)
+Flush.Hi('StatusLineNC', gray, hint)

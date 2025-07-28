@@ -34,7 +34,7 @@
               src = prev.fetchFromGitHub {
                 owner = "vim";
                 repo = "vim";
-                rev = "v{version}";
+                rev = "v${version}";
                 hash = "sha256-aiHvj01EuV0zivj2WJdWZu8+QOQiGssEK4DDRRJ5Gvc=";
               };
 

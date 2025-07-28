@@ -1,4 +1,4 @@
-"
+""
 "
 " SPDX-License-Identifier: MIT
 " Author: Max Karou <maxkarou@protonmail.com>
@@ -13,4 +13,4 @@ endif
 vim9script
 
 # Disable the status line completely.
-set laststatus=1
+set laststatus=2

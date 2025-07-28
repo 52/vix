@@ -12,8 +12,8 @@ endif
 
 vim9script
 
-# Enable the netrw directory banner.
-g:netrw_banner = 1
+# Disable the netrw directory banner.
+g:netrw_banner = 0
 
 # Set the netrw history file location.
 g:netrw_home = $XDG_DATA_HOME .. 'vim'

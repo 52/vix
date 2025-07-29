@@ -49,6 +49,9 @@ g:maplocalleader = ','
 # Enable absolute line numbers.
 set number
 
+# Enable relative line numbers.
+set relativenumber
+
 # Enable the cursorline.
 set cursorline
 

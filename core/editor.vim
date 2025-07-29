@@ -49,10 +49,10 @@ g:maplocalleader = ','
 # Enable absolute line numbers.
 set number
 
-# Highlight the current line.
+# Enable the cursorline.
 set cursorline
 
-# Disable the sign column.
+# Disable the signcolumn.
 set signcolumn=no
 
 # Configure search behaviour.

@@ -16,7 +16,7 @@ vim9script
 # This function reloads 'direnv' and sources the current buffer.
 # Note: Intended for use in the 'vix' repository.
 def VixDevReload(): void
-  exec 'DeReload'
+  exec 'DirReload'
   exec 'source' expand('%')
   echo '[dev.vim]: reloaded ' .. expand('%:t')
   redraw

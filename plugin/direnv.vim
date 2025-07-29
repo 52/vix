@@ -14,7 +14,7 @@ vim9script
 
 # Reloads the direnv environment.
 # This function executes 'direnv reload' to reload the environment.
-def DeReload(): void
+def DirReload(): void
   if !executable('direnv')
     throw '[direnv.vim]: `direnv` command not found in $PATH'
   endif
@@ -28,4 +28,4 @@ def DeReload(): void
   echo '[direnv.vim]: successfully reloaded environment'
 enddef
 
-command! DeReload call DeReload()
+command! DirReload call DirReload()

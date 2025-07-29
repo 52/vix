@@ -12,5 +12,20 @@ endif
 
 vim9script
 
-# Disable the status line completely.
-set laststatus=0
+# Enable the statusline.
+set laststatus=2
+
+# Reset the statusline.
+set statusline=
+
+# Display the buffer name.
+set statusline+=\ %t
+
+# Display the modification status.
+set statusline+=\ %m
+
+# Switch to right alignment.
+set statusline+=%=
+
+# Display the filetype.
+set statusline+=%y\ 

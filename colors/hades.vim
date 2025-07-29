@@ -34,7 +34,7 @@ set background=dark
 var bg = '#1c1c1c'
 var fg = '#e8e8e8'
 
-var dark = '#141414'
+var dark = '#292929'
 var hint = '#323232'
 var gray = '#494141'
 
@@ -62,3 +62,9 @@ Flush.HiLink('LineNrBelow', 'LineNr')
 # Status line
 Flush.Hi('StatusLine', fg, hint)
 Flush.Hi('StatusLineNC', gray, hint)
+
+# Popup menu
+Flush.Hi('Pmenu', fg, dark)
+Flush.Hi('PmenuSel', bg, fg)
+Flush.Hi('PmenuSbar', '', hint)
+Flush.Hi('PmenuThumb', '', gray)

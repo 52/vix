@@ -19,6 +19,7 @@ def VixDevReload(): void
   exec 'DeReload'
   exec 'source' expand('%')
   echo '[dev.vim]: reloaded ' .. expand('%:t')
+  redraw
 enddef
 
 # Enables the 'vix' development mode.

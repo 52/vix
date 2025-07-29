@@ -11,6 +11,9 @@ let
     # Link: https://github.com/jiangmiao/auto-pairs/
     auto-pairs
 
+    # Link: https://github.com/tpope/vim-fugitive/
+    vim-fugitive
+
     # Link: https://github.com/yegappan/lsp/
     (buildVimPlugin rec {
       name = "lsp";

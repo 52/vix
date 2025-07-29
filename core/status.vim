@@ -13,4 +13,4 @@ endif
 vim9script
 
 # Disable the status line completely.
-set laststatus=2
+set laststatus=0

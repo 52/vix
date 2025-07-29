@@ -24,8 +24,8 @@ set completeopt+=menu
 # Display extra information about the current candidate.
 set completeopt+=popup
 
-# Preinsert the current candidate.
-set completeopt+=preinsert
+# Enable fuzzy-matching for candidates.
+set completeopt+=fuzzy
 
 # Register the LSP completion source.
 set complete=FLspCompletor

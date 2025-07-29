@@ -35,7 +35,7 @@ var bg = '#1c1c1c'
 var fg = '#e8e8e8'
 
 var dark = '#141414'
-var hint = '#292929'
+var hint = '#323232'
 var gray = '#494141'
 
 var yellow = '#e3c401'

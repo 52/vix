@@ -36,7 +36,7 @@ var font_size = 16
 # Resets the font to the current 'font_size'.
 # This function updates the 'guifont' option with the current values.
 def FontReset(): void
-  execute ':set guifont=' .. font .. '\ ' .. string(font_size)
+  exec ':set guifont=' .. font .. '\ ' .. string(font_size)
 enddef
 
 # Increases the font size.

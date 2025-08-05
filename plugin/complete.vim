@@ -27,11 +27,8 @@ set completeopt+=fuzzy
 # Enable keyword based fuzzy-matching.
 set completefuzzycollect=keyword
 
-# Register the current buffer completion source.
-set complete=.^5
-
 # Register the LSP completion source.
-set complete^=FLspCompletor^10
+set complete=FLspCompletor^10
 
 # LSP completion provided by the 'yegappan/lsp' plugin.
 # This function is as wrapper to handle async completion requests.

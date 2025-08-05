@@ -19,10 +19,10 @@ set autocomplete
 set completepopup=highlight:Pmenu
 
 # Display the menu for a single candidate.
-set completeopt+=menuone
+set completeopt=menuone
 
 # Display extra information about the current candidate.
-set completeopt=popup
+set completeopt+=popup
 
 # Enable fuzzy-matching for candidates.
 set completeopt+=fuzzy

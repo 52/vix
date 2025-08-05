@@ -18,17 +18,26 @@ set autocomplete
 # Set the completion popup highlight group.
 set completepopup=highlight:Pmenu
 
+# Display the menu for a single candidate.
+set completeopt+=menuone
+
 # Display extra information about the current candidate.
 set completeopt=popup
 
 # Enable fuzzy-matching for candidates.
 set completeopt+=fuzzy
 
+# Disable automatic candidate insertion.
+set completeopt+=noinsert
+
+# Disable automatic candidate selection.
+set completeopt+=noselect
+
 # Enable keyword based fuzzy-matching.
 set completefuzzycollect=keyword
 
 # Register the LSP completion source.
-set complete=FLspCompletor^10
+set complete=FLspCompletor^12
 
 # LSP completion provided by the 'yegappan/lsp' plugin.
 # This function is as wrapper to handle async completion requests.
@@ -75,7 +84,7 @@ set wildoptions+=fuzzy
 set wildmode=noselect:lastused,full
 
 # Limit the number of candidates to n.
-set pumheight=9
+set pumheight=6
 
 # Trigger the wildmenu on command-line input.
 augroup CMDComplete

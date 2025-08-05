@@ -32,11 +32,12 @@ set background=dark
 #
 
 var bg = '#1c1c1c'
-var fg = '#ebebeb'
+var fg = '#dedede'
 
 var dark = '#262626'
 var pale = '#303030'
-var hint = '#4e4e4e'
+var hint = '#474747'
+var gray = '#6c6c6c'
 
 var yellow = '#e3c401'
 var orange = '#f6722b'
@@ -53,8 +54,8 @@ Flush.HiLink('Terminal', 'Normal')
 
 # Cursor
 Flush.Hi('Cursor', '', fg)
-Flush.Hi('CursorLine', '', dark)
-Flush.HiLink('CursorLineNr', 'CursorLine')
+Flush.Hi('CursorLine', '', pale)
+Flush.Hi('CursorLineNr', gray, pale) 
 Flush.HiLink('CursorColumn', 'CursorLine')
 
 # Line numbers
@@ -63,21 +64,21 @@ Flush.HiLink('LineNrAbove', 'LineNr')
 Flush.HiLink('LineNrBelow', 'LineNr')
 
 # Status line
-Flush.HiLink('StatusLine', 'CursorLine')
+Flush.Hi('StatusLine', fg, dark)
 Flush.HiLink('StatusLineNC', 'StatusLine')
 
 # Columns
+Flush.Hi('ColorColumn', '', dark)
 Flush.HiLink('SignColumn', 'LineNr')
-Flush.HiLink('ColorColumn', 'CursorLine')
 
 # Menus
 Flush.Hi('Pmenu', fg, dark)
-Flush.Hi('PmenuSel', '', pale)
+Flush.Hi('PmenuSel', fg, hint)
 Flush.HiLink('PmenuThumb', 'Cursor')
 Flush.HiLink('PmenuSbar', 'PmenuSel')
 
 # Visual
-Flush.Hi('Visual', fg, pale)
+Flush.Hi('Visual', '', hint)
 Flush.HiLink('VisualNOS', 'Visual')
 
 # Search
@@ -98,11 +99,12 @@ Flush.Hi('DiffChange', yellow, dark)
 
 # Tabs
 Flush.Hi('TabLine', fg, dark)
-Flush.Hi('TabLineSel', fg, pale)
+Flush.Hi('TabLineSel', fg, hint)
 Flush.HiLink('TabLineFill', 'TabLine')
 
 # Specials
-Flush.Hi('NonText', hint, '')
+Flush.Hi('NonText', hint, bg)
+Flush.HiLink('Whitespace', 'NonText')
 Flush.HiLink('SpecialKey', 'NonText')
 Flush.HiLink('EndOfBuffer', 'NonText')
 
@@ -113,13 +115,13 @@ Flush.HiLink('VertSplit', 'LineNr')
 Flush.Hi('QuickFixLine', '', pale)
 
 # Pairs
-Flush.Hi('MatchParen', yellow, '', 'bold')
+Flush.Hi('MatchParen', yellow, '')
 
 ### SYNTAX HIGHLIGHTS
 #
 
 # Comments
-Flush.Hi('Comment', hint, '')
+Flush.Hi('Comment', gray, '')
 
 # Constants
 Flush.Hi('Constant', fg, bg)

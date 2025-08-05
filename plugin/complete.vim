@@ -18,9 +18,6 @@ set autocomplete
 # Set the completion popup highlight group.
 set completepopup=highlight:Pmenu
 
-# Use a popup menu to display completions.
-set completeopt+=menu
-
 # Display extra information about the current candidate.
 set completeopt+=popup
 
@@ -61,3 +58,24 @@ def g:LspCompletor(findstart: number, base: string): any
     return g:LspOmniFunc(findstart, base)
   endif
 enddef
+
+# Enable command-line completions.
+set wildmenu
+
+# Display completions in a standard popup.
+set wildoptions+=pum
+
+# Enable fuzzy-matching for candidates.
+set wildoptions+=fuzzy
+
+# Enable sane <TAB> usage in the popup.
+set wildmode=noselect:lastused,full
+
+# Limit the number of candidates to n.
+set pumheight=9
+
+# Trigger the wildmenu on command-line input.
+augroup CMDComplete
+  autocmd!
+  autocmd CmdlineChanged : wildtrigger()
+augroup END

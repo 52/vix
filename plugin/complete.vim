@@ -49,12 +49,6 @@ def g:LspCompletor(findstart: number, base: string): any
     return -2
   endif
 
-  # Ensure the required LSP functions exist before proceeding.
-  # Otherwise, cancel the operation and leave completion mode.
-  if !exists('*g:LspOmniFunc') || !exists('*g:LspOmniCompletePending')
-    return -3
-  endif
-
   if findstart == 1
     # Determine the starting column position.
     # Note: Returns the column where the completion text begins.

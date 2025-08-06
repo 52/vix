@@ -37,7 +37,7 @@ set completeopt+=noselect
 set completefuzzycollect=keyword
 
 # Register the completion sources.
-set complete=.^7,w^5,b^5,u^3
+set complete=.
 
 # Enable command-line completions.
 set wildmenu
@@ -52,10 +52,10 @@ set wildoptions+=fuzzy
 set wildmode=noselect:lastused,full
 
 # Limit the number of candidates to n.
-set pumheight=9
+set pumheight=6
 
 augroup VixCmpSetup
   autocmd!
   # Trigger the wildmenu on command-line input.
-  autocmd CmdlineChanged : wildtrigger()
+  autocmd CmdlineChanged [:/\?] call wildtrigger()
 augroup END

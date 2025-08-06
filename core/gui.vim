@@ -55,6 +55,7 @@ enddef
 
 augroup Font
   autocmd!
+  # Set the font to 'font_size' on first start.
   autocmd GUIEnter * call FontReset()
 augroup END
 

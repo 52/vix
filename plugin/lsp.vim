@@ -56,6 +56,6 @@ augroup VixLspSetup
 
   # Clear native completion when an LSP attaches to a buffer.
   # This prevents an overload of candidates from different sources.
-  # When an LSP is available, resorting to 'omnifunc' is superior.
+  # When an LSP is available, resorting to just 'omnifunc' is superior.
   autocmd User LspAttached setlocal complete=
 augroup END

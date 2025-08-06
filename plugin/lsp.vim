@@ -36,17 +36,26 @@ var config = {
   autoComplete: false,
 }
 
-# Registers the defined LSP's with the 'yegappan/lsp' plugin.
+# Register the defined LSP's with the 'yegappan/lsp' plugin.
 # See: https://github.com/yegappan/lsp
 def Register(): void
-  var arr = filter(copy(servers), (_, s) => executable(s.path) ? v:true : v:false)
+  # Filter LSP's with available executables.
+  # This prevents errors from missing language servers.
+  var arr = filter(copy(servers), (_, s) => !!executable(s.path))
+
   if !empty(arr)
+    call('LspOptionsSet', [config])
     call('LspAddServer', [arr])
   endif
 enddef
 
-augroup LSP
+augroup VixLspSetup
   autocmd!
-  autocmd User LspSetup call LspOptionsSet(config)
+  # Register the LSP's.
   autocmd User LspSetup call Register()
+
+  # Clear native completion when an LSP attaches to a buffer.
+  # This prevents an overload of candidates from different sources.
+  # When an LSP is available, resorting to 'omnifunc' is superior.
+  autocmd User LspAttached setlocal complete=
 augroup END

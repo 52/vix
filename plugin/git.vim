@@ -17,12 +17,12 @@ vim9script
 # See: https://git-scm.com/docs/git-commit#_discussion
 def SetupGitBuffer(): void
   # Highlight when exceeding the subject line after column 50.
-  # This additionally ignores lines starting with '#'.
-  matchadd('Error', '\%1l^[^#].\{49}\zs.*', 100)
+  # This solely applies to the first line.
+  matchadd('Error', '\%1l.\{50}\zs.*', 100)
   
-  # Highlight when exceeding the 70th column.
-  # This additionally ignores lines starting with '#'.
-  matchadd('Error', '^[^#].\{69}\zs.*', 90)
+  # Highlight when exceeding the 72nd column.
+  # This only matches lines starting with standard characters.
+  matchadd('Error', '^\w.\{71}\zs.*', 90)
 
   # Temporarily disable autocomplete.
   setlocal noautocomplete

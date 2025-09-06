@@ -16,4 +16,4 @@ vim9script
 g:netrw_banner = 0
 
 # Set the netrw history file location.
-g:netrw_home = $XDG_DATA_HOME .. '/vim'
+g:netrw_home = $XDG_CACHE_HOME .. '/vim'

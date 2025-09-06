@@ -100,11 +100,11 @@ set undolevels=10000
 set undoreload=10000
 
 # Configure XDG-compliant file locations.
-set viminfofile=$XDG_STATE_HOME/vim/viminfo
-set backupdir=$XDG_STATE_HOME/vim/backup// | mkdir(&backupdir, 'p')
-set directory=$XDG_STATE_HOME/vim/swap//   | mkdir(&directory, 'p')
-set undodir=$XDG_STATE_HOME/vim/undo//     | mkdir(&undodir, 'p')
-set viewdir=$XDG_STATE_HOME/vim/view//     | mkdir(&viewdir, 'p')
+set viminfofile=$XDG_CACHE_HOME/vim/viminfo
+set backupdir=$XDG_CACHE_HOME/vim/backup// | mkdir(&backupdir, 'p')
+set directory=$XDG_CACHE_HOME/vim/swap//   | mkdir(&directory, 'p')
+set undodir=$XDG_CACHE_HOME/vim/undo//     | mkdir(&undodir, 'p')
+set viewdir=$XDG_CACHE_HOME/vim/view//     | mkdir(&viewdir, 'p')
 
 # Improve performance and timing.
 set lazyredraw
